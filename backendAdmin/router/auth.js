@@ -561,32 +561,22 @@ router.post('/constitutionbangla', async (req, res) => {
 		console.log(error)
 	}
 });
-
-
 //  add constitution english name
-
 router.post('/constitutionenglish', async (req, res) => {
-
 	console.log(`addconstitutionenglish`);
 	console.log(req.body)
 	try {
 		const { constitutionid, englishconstitutionname, totalcenter, obtainedcenter, sortorder, date } = req.body;
-
 		if (!constitutionid || !englishconstitutionname) {
 			console.log("error");
 			return res.json({ error: "please filled the constitution name" })
 		}
-
 		const constitutionname = await ConstitutionEnglish.findOne({ englishconstitutionname: req.englishconstitutionname });
-
 		const constitutionNameExist = await ConstitutionEnglish.findOne({ englishconstitutionname: englishconstitutionname });
-
 		if (constitutionNameExist) {
 			return res.status(422).json({ error: " constitutionNameExist Already Exist " });
 		}
-
 		console.log('constitutionNameExist');
-
 		const constitutionenglishinsert = new ConstitutionEnglish({ constitutionid, englishconstitutionname, totalcenter, obtainedcenter, sortorder, date });
 		console.log('constitutionenglishinsert');
 		console.log(constitutionenglishinsert);
@@ -597,76 +587,51 @@ router.post('/constitutionenglish', async (req, res) => {
 		console.log(error)
 	}
 });
-
 //  add candidate bangla name
-
 router.put('/candidatebangla', async (req, res) => {
-
 	console.log('candidateforbangla backend');
 	console.log(req.body)
 	console.log('-------------------------------')
 	console.log('candidateforbangla backend');
 
 });
-
 router.put("/candidatebangla/:selectedElectionId", async (req, res) => {
 	const { selectedElectionId } = req.params;
-
-
 	const updatedValues = req.body;
-
 	console.log('selectedElectionId')
 	console.log(selectedElectionId)
-
 	console.log('updatedValues')
 	console.log(updatedValues)
-
-
 	const filteredValues = updatedValues.filter(item => item.electionid === req.params.selectedElectionId);
 	const objectIds = filteredValues.map(item => item._id);
 	const totalVotes = filteredValues.map(item => item.totalvote);
-
-
 	console.log('Filtered filteredValues: ', filteredValues);
-
 	console.log('Filtered Object IDs:', objectIds);
 	console.log('Filtered Total Votes:', totalVotes);
-
-
 	console.log('totalVotes')
 	console.log(totalVotes)
-
 	if (objectIds.length !== totalVotes.length) {
 		console.log('length are not equal')
 	}
-
 	const updates = objectIds.map((objectId, index) => ({
 		updateOne: {
 			filter: { _id: objectId },
 			update: { $set: { totalvote: totalVotes[index] } }
 		}
 	}));
-
-
 	try {
 		const result = await CandidateBangla.bulkWrite(updates);
-
 		console.log('result')
 		console.log(result)
-
 		res.status(201).json({ message: "Values updated successfully" });
 	} catch (error) {
 		console.error(error);
 		res.status(500).json({ message: 'Internal Server Error' });
 	}
 });
-
-
 router.put("/candidatebangla2api/:selectedElectionId", async (req, res) => {
 	const { selectedElectionId } = req.params;
-
 	const updatedValues = req.body;
-
 	const { candidateData, constitutionsData, electionData } = updatedValues;
 	const {
 		banglaelectionname,
@@ -681,10 +646,8 @@ router.put("/candidatebangla2api/:selectedElectionId", async (req, res) => {
 		partysymbol,
 		totalvote
 	} = candidateData;
-
 	console.log('updatedValues.candidateData')
 	console.log(updatedValues.candidateData)
-
 	const {
 		cons_electionid,
 		cons_constitutionid,
@@ -692,39 +655,27 @@ router.put("/candidatebangla2api/:selectedElectionId", async (req, res) => {
 		totalcenter,
 		obtainedcenter
 	} = constitutionsData;
-
-
 	const elec_objectIds = [];
 	const electionTitle = [];
-
 	updatedValues.electionData.forEach(item => {
 		elec_objectIds.push(item._id);
 		electionTitle.push(item.englishelectionname);
 	});
-
 	// Rest of your code...
-
-
 	const objectIds = [];
 	const totalVotes = [];
 	const candidatenames = [];
 	const partysymbols = [];
-
 	updatedValues.candidateData.forEach(item => {
 		objectIds.push(item._id);
 		totalVotes.push(item.totalvote);
 		candidatenames.push(item.candidatenamebangla);
 		partysymbols.push(item.partysymbol);
 	});
-
-
-
 	const cons_objectIds = [];
 	const cons_totalcenter = [];
 	const cons_obtainedcenter = [];
 	const cons_banglaconstitutionname = [];
-
-
 	updatedValues.constitutionsData.forEach(item => {
 		cons_objectIds.push(item._id);
 		cons_totalcenter.push(item.totalcenter);
