@@ -394,50 +394,36 @@ router.get('/constitutionelection', async (req, res) => {
 		if (!constitutionData) {
 			return res.status(404).json({ message: 'Constitution data not found' });
 		}
-
 		res.status(200).json(constitutionData);
 	} catch (err) {
 		console.error(err);
 		res.status(500).json({ message: 'Server error' });
 	}
 });
-
 // Create a route to retrieve data from MongoDB , getconstitutiondata for constitution page
 router.get('/getconstenglishdata', async (req, res) => {
 	const data = await ConstitutionEnglish.find({});
 	res.send(data);
 });
-
 //  add Election name
-
 router.post('/addelectionname', async (req, res) => {
-
 	console.log(`addelectionname`);
 	console.log(req.body)
 	try {
 		const { banglaelectionname, englishelectionname, statusfordisplay } = req.body;
-
 		console.log(banglaelectionname + ' ' + englishelectionname + ' ' + statusfordisplay)
-
 		if (!banglaelectionname || !englishelectionname || !statusfordisplay) {
 			console.log("error");
 			return res.json({ error: "please filled the Election name" })
 		}
-
-
 		const electionname = await Electionname.findOne({ banglaelectionname: req.banglaelectionname });
-
 		console.log('electionname')
 		console.log(electionname)
-
 		const electionNameExist = await Electionname.findOne({ banglaelectionname: banglaelectionname });
-
 		if (electionNameExist) {
 			return res.status(422).json({ error: " electionNameExist Already Exist " });
 		}
-
 		console.log('electionNameExist');
-
 		const electionnameinsert = new Electionname({ banglaelectionname, englishelectionname, statusfordisplay });
 		console.log('electionnameinsert');
 		console.log(electionnameinsert);
@@ -448,20 +434,13 @@ router.post('/addelectionname', async (req, res) => {
 		console.log(error)
 	}
 });
-
-
-
 //  add constitution name
-
 router.post('/addconstitutionname', async (req, res) => {
-
 	console.log(`addconstitutionname`);
 	console.log(req.body)
 	try {
 		const { electionid, banglaelectionname, englishelectionname, statusfordisplay } = req.body;
-
 		console.log(electionid + ' ' + banglaelectionname + ' ' + englishelectionname + ' ' + statusfordisplay)
-
 		if (!electionid || !banglaelectionname || !englishelectionname || !statusfordisplay) {
 			console.log("error");
 			return res.json({ error: "please filled the Election name" })
@@ -469,9 +448,7 @@ router.post('/addconstitutionname', async (req, res) => {
 		const electionname = await Electionname.findOne({ banglaelectionname: req.banglaelectionname });
 		console.log('electionname')
 		console.log(electionname)
-
 		const electionNameExist = await Electionname.findOne({ banglaelectionname: banglaelectionname });
-
 		if (electionNameExist) {
 			return res.status(422).json({ error: " electionNameExist Already Exist " });
 		}
@@ -483,17 +460,13 @@ router.post('/addconstitutionname', async (req, res) => {
 		console.log(error)
 	}
 });
-
 //  add constitution bangla name
-
 router.post('/constitutionbangla', async (req, res) => {
 	console.log(`addconstitutionbangla`);
 	console.log(req.body)
 	try {
 		const { electionid, constitutionid, banglaconstitutionname, totalcenter, obtainedcenter, sortingorder, date } = req.body;
-
 		console.log(electionid + ' ' + constitutionid + ' ' + banglaconstitutionname + ' ' + totalcenter + ' ' + obtainedcenter + ' ' + sortingorder + ' ' + date)
-
 		if (!constitutionid || !banglaconstitutionname) {
 			console.log("error");
 			return res.json({ error: "please filled the constitution name" })
