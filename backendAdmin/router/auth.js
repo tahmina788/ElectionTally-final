@@ -198,18 +198,15 @@ router.post('/contact', authenticate, async (req, res) => {
 		const userContact = await User.findOne({ _id: req.userID });
 		console.log('userContact')
 		console.log(userContact)
-
 		if (userContact) {
 			const userMessage = await userContact.addMessage(name, email, message);
 			await userContact.save();
 			res.status(201).json({ message: "user contact successfully" })
 		}
-
 	} catch (error) {
 		console.log(error)
 	}
 });
-
 // Create a route to retrieve data from MongoDB , getconstitutiondata for constitution page
 router.get('/getconstforcandibangladata', async (req, res) => {
 	try {
@@ -224,8 +221,6 @@ router.get('/getconstforcandibangladata', async (req, res) => {
 		res.status(500).send('Internal server error');
 	}
 });
-
-
 router.get("/mergeCollections", async (req, res) => {
 	try {
 		const mergedData = await ConstitutionBangla.aggregate([
@@ -238,15 +233,12 @@ router.get("/mergeCollections", async (req, res) => {
 				}
 			}
 		]);
-
 		res.status(200).json(mergedData);
 	} catch (error) {
 		console.error(error);
 		res.status(500).json({ message: "Internal Server Error" });
 	}
 });
-
-
 router.get('/getelectiondata', async (req, res) => {
 	try {
 		const data = await Electionname.find({});
@@ -257,39 +249,28 @@ router.get('/getelectiondata', async (req, res) => {
 		res.status(500).send('Internal Server Error');
 	}
 });
-
-
 // Create a route to retrieve data from MongoDB , getconstitutiondata for constitution page
 router.get('/getconstforcandidatebangladata', async (req, res) => {
 	const data = await ConstitutionBangla.find({});
 	res.send(data);
 });
-
-
 // Create a route to retrieve data from MongoDB , getconstitutiondata for constitution page
 router.get('/getconstbangladata', async (req, res) => {
 	const data = await ConstitutionBangla.find({});
 	res.send(data);
 	//res.send([data, options]);
 });
-
-
 // Create a route to retrieve data from MongoDB , getcandidatedata for candidate page
 router.get('/getcandidatebangladata', async (req, res) => {
 	const data = await CandidateBangla.find({});
 	res.send(data);
 });
-
-
 router.get("/candidatedataedit/:candidateid", async (req, res) => {
 	try {
-
 		const candidateid = req.params.candidateid;
 		console.log("candidateid")
 		console.log(req.params.candidateid)
-
 		const candidateindividualdata = await CandidateBangla.find({ candidateid: candidateid });
-
 		console.log("candidateid")
 		console.log(candidateindividualdata)
 		res.send(candidateindividualdata);
@@ -298,14 +279,11 @@ router.get("/candidatedataedit/:candidateid", async (req, res) => {
 		res.status(500).send("Server Error");
 	}
 });
-
 router.get("/candidateedit/:electionid", async (req, res) => {
 	try {
-
 		const electionid = req.params.electionid;
 		console.log("electionid")
 		console.log(req.params.electionid)
-
 		const candidateindividualdata = await CandidateBangla.find({ electionid: electionid });
 		res.send(candidateindividualdata);
 	} catch (err) {
@@ -313,16 +291,11 @@ router.get("/candidateedit/:electionid", async (req, res) => {
 		res.status(500).send("Server Error");
 	}
 });
-
-
-
 router.get("/searchbyelectionid/:electionid", async (req, res) => {
 	try {
-
 		const electionid = req.params.electionid;
 		console.log("electionid")
 		console.log(req.params.electionid)
-
 		const candidateindividualdata = await CandidateBangla.find({ electionid: electionid });
 		res.send(candidateindividualdata);
 	} catch (err) {
@@ -330,17 +303,12 @@ router.get("/searchbyelectionid/:electionid", async (req, res) => {
 		res.status(500).send("Server Error");
 	}
 });
-
-
 router.get("/constitutiondataedit/:constitutionid", async (req, res) => {
 	try {
-
 		const constitutionid = req.params.constitutionid;
 		console.log("constitutionid")
 		console.log(req.params.constitutionid)
-
 		const constitutionindividualdata = await ConstitutionBangla.find({ constitutionid: constitutionid });
-
 		console.log("constitutionid")
 		console.log(constitutionindividualdata)
 		res.send(constitutionindividualdata);
@@ -349,17 +317,13 @@ router.get("/constitutiondataedit/:constitutionid", async (req, res) => {
 		res.status(500).send("Server Error");
 	}
 });
-
 //  this router is using multidimensional component
 router.get("/dimensional/:electionid", async (req, res) => {
 	try {
-
 		const electionid = req.params.electionid;
 		console.log("electionid")
 		console.log(req.params.electionid)
-
 		const candidateindividualdata = await CandidateBangla.find({ electionid: electionid });
-
 		//console.log("candidateid")
 		//console.log(candidateindividualdata)
 		res.send(candidateindividualdata);
@@ -368,74 +332,57 @@ router.get("/dimensional/:electionid", async (req, res) => {
 		res.status(500).send("Server Error");
 	}
 });
-
 //  this router is using dimensional component
-
 router.get("/dimensional2api/:electionid", async (req, res) => {
 	try {
-
 		const electionid = req.params.electionid;
 		console.log("electionid")
 		console.log(req.params.electionid)
-
 		const electiondata = await Electionname.find({ electionid: electionid });
 		const candidateindividualdata = await CandidateBangla.find({ electionid: electionid });
 		const constitutions = await ConstitutionBangla.find({ electionid: electionid });
 		console.log("electiondata")
 		console.log(electiondata)
 		//res.send(candidateindividualdata);
-
 		const responseData = {
 			electiondata: electiondata,
 			candidateindividualdata: candidateindividualdata,
 			constitutions: constitutions
 		};
-
 		console.log("responseData")
 		console.log(responseData)
-
 		res.send(responseData);
 	} catch (err) {
 		console.error(err.message);
 		res.status(500).send("Server Error");
 	}
 });
-
-
-
 // read the constitution by election value is using multidimensional component
-
 router.get("/constitutiondimension/:electionid", async (req, res) => {
 	try {
 		const electionid = req.params.electionid;
 		console.log("electionid")
 		console.log(req.params.electionid)
 		const constitutions = await ConstitutionBangla.find({ electionid: electionid });
-
 		res.json(constitutions);
 	} catch (err) {
 		console.error(err.message);
 		res.status(500).send("Server Error");
 	}
 });
-
 // read the election value
-
 router.get("/constitution/:electionid", async (req, res) => {
 	try {
 		const electionid = req.params.electionid;
 		const constitutions = await ConstitutionBangla.find({
 			electionid: electionid,
 		});
-
 		res.json(constitutions);
 	} catch (err) {
 		console.error(err.message);
 		res.status(500).send("Server Error");
 	}
 });
-
-
 router.get('/constitutionelection', async (req, res) => {
 	const electionId = req.query.electionid;
 	console.log('electionId');
