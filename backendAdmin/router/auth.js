@@ -86,23 +86,18 @@ router.get('/loginauth', async (req, res) => {
 	const lastToken = tokens[tokens.length - 1];
 	console.log(lastToken)
 	token = lastToken.token;
-
 	//res.cookie("jwtoken", token).send('jwtoken set');
 	res.cookie("jwtoken", token, {
 		expires: new Date(Date.now() + 600000),
 		sameSite: 'Strict'
 	});
-
 	console.log(req.cookies); // Access parsed cookies using req.cookies
 	res.send('get login from the server router js');
 });
-
 router.get('/signin', async (req, res) => {
 	let token;
 	const password = '123456';
-	
 	const userLogin = await User.findOne({ email: 'admin@gmail.com' }).exec();
-
 	const tokens = userLogin.tokens;
 	if (tokens.length === 0) {
 		return res.status(404).json({ error: 'No tokens found for this user' });
@@ -116,16 +111,13 @@ router.get('/signin', async (req, res) => {
 	});
 	console.log('auth = get signin');
 });
-
 router.post('/signin', async (req, res) => {
 	try {
 		let token;
 		const { email, password } = req.body;
-
 		if (!email || !password) {
 			return res.status(400).json({ error: "please filled the data" })
-		}
-		
+		}	
 		const userLogin = await User.findOne({ email: 'admin@gmail.com' }).exec();
 		console.log('auth = userLogin');
 		console.log(userLogin);
@@ -144,16 +136,12 @@ router.post('/signin', async (req, res) => {
 				if (tokens.length === 0) {
 					return res.status(404).json({ error: 'No tokens found for this user' });
 				}
-
 				// Assuming the tokens array is sorted by date in ascending order
 				const lastToken = tokens[tokens.length - 1];
-
 				const token7 = lastToken.token;
-
 				console.log('auth = token');
 				console.log(lastToken);
 				//res.cookie('jwtoken', token).send('token set'); //Sets name = express
-
 				console.log(token7);
                 {/*
 				res.cookie("jwtoken", token7, {
@@ -165,11 +153,9 @@ router.post('/signin', async (req, res) => {
 					sameSite: 'Strict',
 					// You can also add other options like 'secure', 'httpOnly', etc.
 				  };
-				
 				 // res.cookie('jwtoken', token7, cookieOptions);
 				{/*res.cookie('name', 'express').send('cookie set');*/ } //Sets name = express
 				console.log('auth = post signin req.cookies');
-
 				res.json({ message: "user signin successfully with auth in docker" })
 			}
 		} else {
@@ -179,13 +165,8 @@ router.post('/signin', async (req, res) => {
 	} catch (err) {
 		console.log(err)
 	}
-
 });
-
-
-
 // about us
-
 router.get('/about', authenticate, (req, res) => {
 	//router.get('/about', (req,res) => {
 	console.log(`about us`);
@@ -193,8 +174,6 @@ router.get('/about', authenticate, (req, res) => {
 	//res.send(`about us from the server`);
 	res.send(req.rootUser)
 });
-
-
 router.get('/getdatanew', authenticate, (req, res) => {
 	const twentyFourHoursInMilliseconds = 24 * 60 * 60 * 1000;
 	const expirationDate = new Date(Date.now() + twentyFourHoursInMilliseconds);
@@ -206,25 +185,17 @@ router.get('/getdatanew', authenticate, (req, res) => {
 	console.log('Get data new');
 	res.send(req.rootUser);
 });
-
 // contact us page
-
 router.post('/contact', authenticate, async (req, res) => {
-	//router.post('/contact', async(req,res) => {
 	console.log(`contact us`);
 	try {
 		const { name, email, message } = req.body;
-
 		console.log(name + ' ' + email + ' ' + message)
-
 		if (!name || !email || !message) {
 			console.log("error");
 			return res.json({ error: "please filled the contact form" })
 		}
-
-
 		const userContact = await User.findOne({ _id: req.userID });
-
 		console.log('userContact')
 		console.log(userContact)
 
