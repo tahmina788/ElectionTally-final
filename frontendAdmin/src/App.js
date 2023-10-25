@@ -41,7 +41,6 @@ import dotenv from 'dotenv'; // Import dotenv
 const hostname = process.env.REACT_APP_HOST;
 // contextAPI
 export const UserContext = createContext(null);
-
 const Routing = () => {
 	return (
 		<Switch>
@@ -136,29 +135,21 @@ const Routing = () => {
 const App = () => {
 
 	const showNavbarElection = !window.location.pathname.includes('/electionresult');
-
 	// Pass the retrieved state as the initial state of your UserContext
 	const [state, dispatch] = useReducer(reducer, initialState);
-
 	const accessToken = localStorage.getItem('isLoggedin');
-
 	console.log('hi');
 	console.log(accessToken);
-
 	return (
 		<>
 			<I18nextProvider i18n={i18n}>
 				<UserContext.Provider value={{ state, dispatch }}>
-				
 					{showNavbarElection ? <Navbar /> : <Authfound />}
-					
 					<Routing />
 				</UserContext.Provider>
 			</I18nextProvider>
 		</>
 	)
 }
-
-
 
 export default App;
