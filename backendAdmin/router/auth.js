@@ -792,12 +792,9 @@ router.put("/candidatebangla2api/:selectedElectionId", async (req, res) => {
 router.post('/candidatebangla', async (req, res) => {
 	try {
 		const { electionid, constitutionid, candidateid, candidatenamebangla, partysymbol, totalvote, date } = req.body;
-
 		console.log('candidatebangla')
 		console.log(req.body)
-
 		console.log(electionid + ' ' + constitutionid + ' ' + candidateid + ' ' + candidatenamebangla + ' ' + partysymbol + ' ' + totalvote)
-
 		if (!electionid || !candidatenamebangla) {
 			console.log("error");
 			return res.json({ error: "please filled the candidate form" })
@@ -813,11 +810,8 @@ router.post('/candidatebangla', async (req, res) => {
 		console.log(error)
 	}
 });
-
-
 router.post('/candidate/:upid', async (req, res) => {
 	try {
-
 		const upid = req.params.upid;
 		console.log('candidateparams')
 		console.log(req.params)
@@ -827,48 +821,31 @@ router.post('/candidate/:upid', async (req, res) => {
 		console.log('candidatesearch')
 		console.log(candidatesearch)
 		const candidate = await CandidateBangla.updateOne({ _id: id }, req.body);
-		console.log('req.body')
-		console.log(req.body)
-
-		console.log('candidate')
-		console.log(candidate)
 		res.status(201).json({ message: "value updated successfully" })
 	} catch (err) {
 		console.error(err);
 		res.status(500).json({ success: false, error: 'Server Error' });
 	}
 });
-
-
 //  add candidate english name
-
 router.post('/candidateenglish', async (req, res) => {
-
 	console.log(`candidateenglish`);
 	console.log(req.body)
 	try {
 		const { electionid, constitutionid, candidateid, candidatenameenglish, partysymbol, totalvote, date } = req.body;
-
 		console.log(electionid + ' ' + constitutionid + ' ' + candidateid + ' ' + candidatenameenglish + ' ')
-
 		if (!constitutionid || !candidatenameenglish) {
 			console.log("error");
 			return res.json({ error: "please filled the candidate form" })
 		}
-
 		const candidateenglish = await CandidateEnglish.findOne({ candidatenameenglish: req.candidatenameenglish });
-
 		console.log('candidateenglish')
 		console.log(candidateenglish)
-
 		const candidateNameExist = await CandidateEnglish.findOne({ candidatenameenglish: candidatenameenglish });
-
 		if (candidateNameExist) {
 			return res.status(422).json({ error: " candidateName Already Exist " });
 		}
-
 		console.log('candidateNameExist');
-
 		const candidateenglishinsert = new CandidateEnglish({ electionid, constitutionid, candidateid, candidatenameenglish, partysymbol, totalvote, date });
 		console.log('candidateenglishinsert');
 		console.log(candidateenglishinsert);
@@ -879,22 +856,14 @@ router.post('/candidateenglish', async (req, res) => {
 		console.log(error)
 	}
 });
-
-
-
 router.post('/selecttemplateec', async (req, res) => {
 	console.log('selecttemplateec');
 })
-
 // Logout page
-
 router.get('/logout', (req, res) => {
 	console.log(`logout page`);
 	res.clearCookie('jwtoken', { path: '/' })
 	res.status(200).send('user Login');
 })
-
-
-
 
 module.exports = router;
