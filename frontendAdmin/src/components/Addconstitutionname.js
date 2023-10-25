@@ -1,29 +1,15 @@
 import React, { useState, useEffect } from "react";
-
-
 import "./components.css";
-
-//const hostname = "localhost";
-//const hostname = process.env.REACT_APP_HOST;
 const port = "7000";
-
 const { REACT_APP_HOST } = process.env;
 const hostname = `${REACT_APP_HOST}`;
-
 const Addconstitutionname = () => {
-
 	const [electionNameData, setelectionNameData] = useState({
 		constitutionid: "", banglaconstitutionname: "", englishconstitutionname: ""
 	});
-
 	// read election value from database
-
-
-
 	const [electionOptionData, setElectionOptionData] = useState([]);
-
 	let name, value;
-
 	const getElectionOptionValue = async () => {
 		try {
 			const res = await fetch(`http://${hostname}:5000/getelectiondata`, {
@@ -34,7 +20,6 @@ const Addconstitutionname = () => {
 				},
 				credentials: "include"
 			})
-
 			const optionsdata = await res.json();
 			console.log('Election data');
 			console.log(optionsdata);
@@ -51,39 +36,25 @@ const Addconstitutionname = () => {
 	useEffect(() => {
 		getElectionOptionValue();
 	}, []);
-
-
-
 	// we are storing data in states
-
 	const handleInputs = (e) => {
 		console.log(e);
 		name = e.target.name;
 		value = e.target.value;
 		setelectionNameData({ ...electionNameData, [name]: value });
 	}
-
 	const handleFirstSelectChange = (event) => {
 		const selectedValue = event.target.value;
 		console.log('selectedValue')
 		console.log(selectedValue)
 	};
-
-
-
-
 	const constitutionNameForm = async (e) => {
 		e.preventDefault();
-
 		const { constitutionid, banglaconstitutionname, englishconstitutionname } = electionNameData;
-
 		console.log('constitution post data');
 		console.log(electionNameData);
-
 		if (banglaconstitutionname === "") { alert("please enter your banglaconstitutionname"); }
 		else if (englishconstitutionname === "") { alert("please enter your englishconstitutionname"); }
-
-
 		const res = await fetch(`http://${hostname}:5000/addconstitutionname`, {
 			method: "POST",
 			headers: {
@@ -95,7 +66,6 @@ const Addconstitutionname = () => {
 				englishconstitutionname
 			})
 		});
-
 		const data = await res.json();
 		console.log('data.status')
 		console.log(data.status)
@@ -104,18 +74,14 @@ const Addconstitutionname = () => {
 			setelectionNameData({ ...electionNameData, constitutionid: "", banglaconstitutionname: "", englishconstitutionname: "" })
 		}
 	}
-
-
 	return (
 		<>
 			<div className="start_form">
 				<div className="container">
 					<div className="row">
-
 						<form method="POST" id="contact_form">
-
 							<>
-								<div>
+		                                              <div>
 									<label htmlFor="firstSelect">Select an option:</label>
 									<select id="firstSelect" onChange={handleFirstSelectChange}>
 										<option value="default">Default Option</option>
