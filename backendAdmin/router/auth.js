@@ -734,23 +734,10 @@ router.put("/candidatebangla2api/:selectedElectionId", async (req, res) => {
 	const updatedValues = req.body;
 
 	const { candidateData, constitutionsData, electionData } = updatedValues;
-
-	console.log('selectedElectionId')
-	console.log(selectedElectionId)
-
-	console.log('updatedValues')
-	console.log(updatedValues)
-
-
-
 	const {
 		banglaelectionname,
 		englishelectionname
 	} = electionData;
-
-
-
-
 	// Access candidateData and constitutionData with default values
 	const {
 		electionid,
