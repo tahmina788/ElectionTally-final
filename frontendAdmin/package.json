@@ -1,0 +1,58 @@
+{
+  "name": "frontendElection",
+  "version": "0.1.0",
+  "private": true,
+  "proxy": "http://192.168.200.249:7000",
+  "dependencies": {
+    "@testing-library/jest-dom": "^5.11.5",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.10",
+    "axios": "^1.4.0",
+    "bcryptjs": "^2.4.3",
+    "bootstrap": "^4.6.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "i18next": "^22.5.0",
+    "i18next-browser-languagedetector": "^7.0.1",
+    "i18next-http-backend": "^2.2.1",
+    "jquery": "^3.6.4",
+    "js-cookie": "^3.0.5",
+    "mongoose": "^7.2.0",
+    "popper.js": "^1.16.1",
+    "react": "^18.2.0",
+    "react-bootstrap": "^2.7.4",
+    "react-dom": "^18.2.0",
+    "react-i18next": "^12.3.1",
+    "react-redux": "^8.0.5",
+    "react-router-dom": "^5.3.4",
+    "react-scripts": "4.0.3",
+    "redux": "^4.2.1",
+    "reselect": "^4.1.8",
+    "web-vitals": "^1.0.1",
+    "yarn": "^1.22.19"
+  },
+  "scripts": {
+    "start": "react-scripts start --port 8800",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
