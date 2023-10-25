@@ -104,9 +104,7 @@ router.post('/userinformation', async (req, res) => {
 
 
 router.get('/getdata', authenticate, (req, res) => {
-	//router.get('/getdata', (req,res) => {
 	console.log(`get data`);
-	//res.send(`get data from the server`);
 	res.send(req.rootUser)
 });
 
