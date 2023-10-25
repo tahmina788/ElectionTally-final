@@ -7,19 +7,11 @@ const express = require('express');
 const session = require('express-session');
 const router = express.Router();
 const mongoose = require('mongoose');
-
-
 const path = require('path');
 const dotenv = require('dotenv');
-
-
 router.use(cookieParser());
-
-
 mongoose.set('strictQuery', false);
 // Initialize DB
-
-
 mongoose
 	.connect('mongodb://mongo:27017/registrationlogin', {
 		useNewUrlParser: true,
@@ -27,12 +19,7 @@ mongoose
 	})
 	.then(() => console.log('connection successful'))
 	.catch(err => console.log(`no connection`))
-
-
-
 const User = require("../model/userSchema");
-
-
 const Electionname = require("../model/electionNameSchema");
 const ConstitutionName = require("../model/constitutionNameSchema");
 const ConstitutionBangla = require("../model/constitutionbanglaschema");
@@ -41,75 +28,52 @@ const CandidateBangla = require("../model/candidateBanglaSchema");
 const CandidateEnglish = require("../model/candidateEnglishSchema");
 const CandidateForBangla = require("../model/candidateForBanglaSchema");
 const Data = require("../model/dataSchema");
-
-
 router.get('/', async (req, res) => {
 	console.log('auth get , cookies');
 	//res.setHeader('Access-Control-Allow-Origin', 'http://192.168.0.102:8800');
 	res.send('Hello world from the server backendAdmin 7000 router js');
 });
-
 router.get('/checkcookie', (req, res) => {
 	res.cookie('name', 'express').send('cookie set'); //Sets name = express
 	console.log('auth get , cookies');
 	console.log(req.cookies); // Access parsed cookies using req.cookies
 	res.send('Hello world from the server router js');
 });
-
-
 // Async-Await
-
 router.post('/register', async (req, res) => {
-
 	const { name, email, password } = req.body;
 	if (!name || !email || !password) {
 		// 422 Unprocessable Entity
 		return res.status(422).json({ error: "please fill with the value" })
 	}
-
 	try {
 		const userExist = await User.findOne({ email: email });
 		if (userExist) {
 			return res.status(422).json({ error: " Email Already Exist " });
 		}
 		const user = new User({ name, email, password });
-
 		// pre save method
 		await user.save();
-
 		res.status(201).json({ message: "user registered successfully" })
-
 	} catch (err) {
 		console.log(err);
 	}
 });
-
-
-
 router.get('/userinformation', async (req, res) => {
 	console.log(`user information`);
 	const userLogin5 = await User.find().exec();
-	
-	//const data = req.rootUser;
 	res.json(userLogin5);
 });
-
-
 router.post('/userinformation', async (req, res) => {
 	const { userEmail } = req.body;
 	const userInfoMatched = await User.findOne({ email: userEmail });
 	res.json(userInfoMatched);
 })
-
-
-
 router.get('/getdata', authenticate, (req, res) => {
 	console.log(`get data`);
 	res.send(req.rootUser)
 });
-
 // login route
-
 router.get('/loginauth', async (req, res) => {
 	let token;
 	const password = '123456';
@@ -118,7 +82,6 @@ router.get('/loginauth', async (req, res) => {
 	if (tokens.length === 0) {
 		return res.status(404).json({ error: 'No tokens found for this user' });
 	}
-
 	// Assuming the tokens array is sorted by date in ascending order
 	const lastToken = tokens[tokens.length - 1];
 	console.log(lastToken)
