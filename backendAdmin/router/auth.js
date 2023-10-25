@@ -12,24 +12,13 @@ const mongoose = require('mongoose');
 const path = require('path');
 const dotenv = require('dotenv');
 
-//const configPath = path.join(__dirname, 'config.env');
-//dotenv.config({ path: configPath });
-
-//console.log('configPath' + configPath)
 
 router.use(cookieParser());
 
 
 mongoose.set('strictQuery', false);
 // Initialize DB
-{/*
-mongoose
- .connect('mongodb+srv://tahminabithe47:01757112809A@electiontallywithlogin.1x4u0rl.mongodb.net/',{
-     useNewUrlParser: true,
-     useUnifiedTopology: true,
- })
- .then(() => console.log('mongodb connection successful'))
- .catch(err => console.log(`no connection`)) */}
+
 
 mongoose
 	.connect('mongodb://mongo:27017/registrationlogin', {
@@ -43,7 +32,6 @@ mongoose
 
 const User = require("../model/userSchema");
 
-console.log(User);
 
 const Electionname = require("../model/electionNameSchema");
 const ConstitutionName = require("../model/constitutionNameSchema");
@@ -53,10 +41,6 @@ const CandidateBangla = require("../model/candidateBanglaSchema");
 const CandidateEnglish = require("../model/candidateEnglishSchema");
 const CandidateForBangla = require("../model/candidateForBanglaSchema");
 const Data = require("../model/dataSchema");
-
-console.log('cookieParser')
-console.log(cookieParser)
-
 
 
 router.get('/', async (req, res) => {
@@ -112,15 +96,8 @@ router.get('/userinformation', async (req, res) => {
 
 
 router.post('/userinformation', async (req, res) => {
-			const { userEmail } = req.body;
-
-		console.log('userEmail')
-		console.log(req.body)
-	console.log('userinformation');
-	console.log(userEmail);
+	const { userEmail } = req.body;
 	const userInfoMatched = await User.findOne({ email: userEmail });
-	console.log('userInfoMatched');
-	console.log(userInfoMatched);
 	res.json(userInfoMatched);
 })
 
@@ -132,45 +109,6 @@ router.get('/getdata', authenticate, (req, res) => {
 	//res.send(`get data from the server`);
 	res.send(req.rootUser)
 });
-
-
-// get user data for contact us and home page
-
-//router.get('/getdata', authenticate, async (req, res) => {
-	//router.get('/getdata', async (req, res) => {
-	//console.log(`get data with authenticate`);
-	
-	// Set the cookie 
-	//const userLogin = await User.findOne({ email: 'admin@gmail.com' }).exec();
-	
-	//const data = req.rootUser;
-	//res.json(userLogin);
-//});
-
-//  getdata without authenticate
-{/*
-router.get('/getdata', async(req,res) => {
-    let token; 
-	const password = '123456';
-	const userLogin = await User.findOne({ email: 'admin@gmail.com' }).exec();
-    const isMatch = await bcrypt.compare(password, userLogin.password);
-    token = await userLogin.generateAuthToken();
-	res.cookie("jwtoken", token, {
-		expires: new Date(Date.now() + 600000),
-		sameSite: 'Strict'
-	});
-	 //Sets electiontoken = electionjwtoken
-	console.log('electiontoken auth get , cookies');
-	console.log(req.cookies); // Access parsed cookies using req.cookies
-	
-	 //const userLogin = await User.findOne({ email: 'admin@gmail.com' });
-	 console.log('userLogin auth');
-	 console.log(userLogin);
-     const data = userLogin;
-	 res.json(data);
-});
-*/}
-
 
 // login route
 
