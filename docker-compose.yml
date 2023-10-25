@@ -1,0 +1,35 @@
+version: '3'
+services:
+  react-admin:
+    image: react-admin
+    stdin_open: true
+    ports:
+      - "8800:8800"
+    networks:
+      - mern-app    
+  api-admin:
+    image: api-admin
+    ports:
+      - "7000:7000"
+    networks:
+      - mern-app
+    links:
+      - mongo    
+
+  mongo:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    networks:
+      - mern-app
+    volumes:
+      - mongo-data:/data/db
+networks:
+  mern-app:
+   driver: bridge
+volumes:
+   mongo-data:
+    driver: local   
+    
+    
+
