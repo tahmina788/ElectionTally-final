@@ -27,23 +27,7 @@ const electionNameSchema = new mongoose.Schema({
   }
 	 });
 	 
-
-// Define a pre-save hook
-// electionNameSchema.pre('save', async function (next) {
-  // if (this.isNew) {
-    // const lastRecord = await this.constructor.findOne({}, { electionid: 1 }).sort({ electionid: -1 });
-	// console.log('lastRecord');console.log(lastRecord);
-    // const nextValue = lastRecord ? lastRecord.electionid + 1 : 1;
-    // this.electionid = nextValue;
-  // }
-  // next();
-// });
-
-// Define the unique index
-//   db.electionnames.findOne({}, { electionid: 1 }).sort({ electionid: -1 })
-
 electionNameSchema.index({ electionid: 1 }, { unique: true });
-
 electionNameSchema.pre('save', async function (next) {
   if (this.isNew) {
     const lastRecord = await this.constructor.findOne({}, { electionid: 1 })
@@ -56,17 +40,8 @@ electionNameSchema.pre('save', async function (next) {
     const nextValue = lastRecord ? parseInt(lastRecord.electionid) + 1 : 1;
     this.electionid = nextValue.toString(); // Convert the nextValue back to a string before assigning it to `electionid`
   }
-
   next();
 });
-
-// Compile the schema into a model
-//const ElectionName = mongoose.model('ElectionName', electionNameSchema);
-
-	 
-// const Electionname = new mongoose.model("ELECTIONNAME", electionNameSchema);
-// module.exports = Electionname;
-
 const Electionname = new mongoose.model("Electionname", electionNameSchema);
 
 module.exports = Electionname;
