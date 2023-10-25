@@ -1,0 +1,26 @@
+[
+{"country_id":"1","sortname":"AF","country_name":"Afghanistan","state":[
+	{"state_id":"42","state_name":"Badakhshan","country_id":"1"},
+	{"state_id":"43","state_name":"Badghis","country_id":"1"},
+	{"state_id":"44","state_name":"Baghlan","country_id":"1"},
+	{"state_id":"45","state_name":"Balkh","country_id":"1"}
+]},
+{"country_id":"2","sortname":"BD","country_name":"Bangladesh","state":[
+	{"state_id":"47","state_name":"Dhaka","country_id":"2"},
+	{"state_id":"48","state_name":"Rajshahi","country_id":"2"},
+	{"state_id":"50","state_name":"Comilla","country_id":"2"},
+	{"state_id":"52","state_name":"Panchaghar","country_id":"2"}
+]},
+{"country_id":"3","sortname":"IND","country_name":"India","state":[
+	{"state_id":"53","state_name":"kerala","country_id":"3"},
+	{"state_id":"54","state_name":"dilhi","country_id":"3"},
+	{"state_id":"55","state_name":"bombay","country_id":"3"},
+	{"state_id":"57","state_name":"kalkata","country_id":"3"}
+]},
+{"country_id":"4","sortname":"NP","country_name":"Nepal","state":[
+	{"state_id":"58","state_name":"dilhi","country_id":"4"},
+	{"state_id":"72","state_name":"panjab","country_id":"4"},
+	{"state_id":"74","state_name":"bombay","country_id":"4"},
+	{"state_id":"75","state_name":"kalkata","country_id":"4"}
+]}
+]

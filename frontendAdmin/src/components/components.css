@@ -1,0 +1,108 @@
+// vote result
+
+
+.resultconstitution{
+	font-size: 18px;
+	color:#1a365d;
+}
+
+
+
+.form-control{
+	width:35%;
+}
+
+
+
+.form-group input{
+display:block;
+width:50%;
+height:44px;
+padding:6px 12px;
+font-size:14px;
+line-height:2;
+color:#555;
+background-color:#fff;
+background-image:none;
+border:1px solid #ccc;
+}
+
+.form-group input:focus{
+    border: 2px solid rgba(66,153,225,0.7);
+}
+.form-group input::placeholder{
+    color:#8694a8;
+    letter-spacing: .5px;
+    font-size:14px;
+}
+
+.form-group .form-submit{
+	display: block;
+    width: 50%;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    background-color:#ecece2;  
+    color:#1a365d;
+    font-weight: 700;
+}
+
+/*    css for table  all ElectionAllDataList  */
+
+
+.table-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.table-header {
+  display: flex;
+  flex-direction: row;
+}
+
+.table-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.table-cell {
+  flex-basis: 33.33%;
+  border: 1px solid black;
+}
+
+
+
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropbtn {
+  display: inline-block;
+  color: #ffffff;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: #000000;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}

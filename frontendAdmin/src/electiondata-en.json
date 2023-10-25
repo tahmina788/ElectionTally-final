@@ -1,0 +1,45 @@
+[
+{"election_id":"1","election_name":"RESULTS OF THE THREE CITY CORPORATION POLLS","constitution":[
+	{"constitution_id":"1","constitution_name":"Dhaka North","election_id":"1"},
+	{"constitution_id":"2","constitution_name":"Dhaka South","election_id":"1"},
+	{"constitution_id":"3","constitution_name":"Chittagong","election_id":"1"}
+]},
+{"election_id":"2","election_name":"Municipal Elections 2015","constitution":[
+	{"constitution_id":"4","constitution_name":"Municipal Elections 2015","election_id":"2"}
+]},
+{"election_id":"3","election_name":"Rangpur city polls","constitution":[
+	{"constitution_id":"5","constitution_name":"Rangpur city polls","election_id":"3"}
+]},
+{"election_id":"4","election_name":"KHULNA CITY POLLS 2018","constitution":[
+	{"constitution_id":"6","constitution_name":"KHULNA CITY POLLS 2018","election_id":"4"}
+]},
+{"election_id":"5","election_name":"GAZIPUR CITY POLLS 2018","constitution":[
+	{"constitution_id":"7","constitution_name":"GAZIPUR CITY POLLS 2018","election_id":"5"}
+]},
+{"election_id":"7","election_name":"City Polls 2018: Mayoral Election Results","constitution":[
+	{"constitution_id":"8","constitution_name":"Rajshahi","election_id":"7"},
+	{"constitution_id":"9","constitution_name":"Sylhet","election_id":"7"},
+	{"constitution_id":"10","constitution_name":"Barishal","election_id":"7"}
+]},
+{"election_id":"8","election_name":"ELEVENTH PARLIAMENTARY ELECTION","constitution":[
+	{"constitution_id":"11","constitution_name":"ELEVENTH PARLIAMENTARY ELECTION","election_id":"8"}
+]},
+{"election_id":"9","election_name":"City Polls 2020","constitution":[
+	{"constitution_id":"12","constitution_name":"Dhaka North","election_id":"9"},
+	{"constitution_id":"13","constitution_name":"Dhaka South","election_id":"9"}
+]},
+{"election_id":"10","election_name":"2020 US Election","constitution":[
+	{"constitution_id":"14","constitution_name":"2020 US Election","election_id":"10"}
+]},
+{"election_id":"11","election_name":"Narayanganj City Polls","constitution":[
+	{"constitution_id":"15","constitution_name":"Narayanganj City Polls","election_id":"11"}
+]},
+{"election_id":"12","election_name":"Cumilla City Polls 2022","constitution":[
+	{"constitution_id":"16","constitution_name":"Cumilla City Polls 2022","election_id":"12"}
+]},
+{"election_id":"13","election_name":"Gazipur election 2023","constitution":[{"constitution_id":"17","constitution_name":"Gazipur election 2023","election_id":"13"}]},  
+{"election_id":"15","election_name":"Bhola Election 2023","constitution":[{"constitution_id":"27","constitution_name":"Bhola Election 2023","election_id":"15"}]},
+{"election_id":"16","election_name":"Jessore Election 2023","constitution":[{"constitution_id":"28","constitution_name":"Jessore Election 2023","election_id":"16"}]},
+{"election_id":"17","election_name":"Jhikargacha Election 2023","constitution":[{"constitution_id":"29","constitution_name":"Jhikargacha Election 2023","election_id":"17"}]},
+{"election_id":"18","election_name":"Gazipur City Election","constitution":[{"constitution_id":"30","constitution_name":"Gazipur City Election","election_id":"18"}]}
+]

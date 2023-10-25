@@ -1,0 +1,39 @@
+[
+{"election_id":"1","election_name":"তিন সিটি করপোরেশনের ভোটের ফল","constitution":[
+	{"constitution_id":"1","constitution_name":"ঢাকা উত্তর","election_id":"1"},
+	{"constitution_id":"2","constitution_name":"ঢাকা দক্ষিণ","election_id":"1"},
+	{"constitution_id":"3","constitution_name":"চট্টগ্রাম","election_id":"1"}
+]},
+{"election_id":"2","election_name":"পৌর নির্বাচন ২০১৫","constitution":[
+	{"constitution_id":"4","constitution_name":"পৌর নির্বাচন ২০১৫","election_id":"2"}
+]},
+{"election_id":"3","election_name":"রংপুর সিটি নির্বাচন ২০১৭","constitution":[
+	{"constitution_id":"5","constitution_name":"রংপুর সিটি নির্বাচন ২০১৭","election_id":"3"}
+]},
+{"election_id":"4","election_name":"খুলনা সিটি নির্বাচন ২০১৮","constitution":[
+	{"constitution_id":"6","constitution_name":"খুলনা সিটি নির্বাচন ২০১৮","election_id":"4"}
+]},
+{"election_id":"5","election_name":"গাজীপুর সিটি নির্বাচন ২০১৮","constitution":[
+	{"constitution_id":"7","constitution_name":"গাজীপুর সিটি নির্বাচন ২০১৮","election_id":"5"}
+]},
+{"election_id":"7","election_name":"তিন সিটির ভোট ২০১৮: মেয়র পদের ফল","constitution":[
+	{"constitution_id":"8","constitution_name":"রাজশাহী","election_id":"7"},
+	{"constitution_id":"9","constitution_name":"সিলেট","election_id":"7"},
+	{"constitution_id":"10","constitution_name":"বরিশাল","election_id":"7"}
+]},
+{"election_id":"8","election_name":"একাদশ সংসদ নির্বাচন","constitution":[
+	{"constitution_id":"11","constitution_name":"একাদশ সংসদ নির্বাচন","election_id":"8"}
+]},
+{"election_id":"9","election_name":"ঢাকা সিটি করপোরেশন নির্বাচন ২০২০","constitution":[
+	{"constitution_id":"12","constitution_name":"ঢাকা উত্তর","election_id":"9"},
+	{"constitution_id":"13","constitution_name":"ঢাকা দক্ষিণ","election_id":"9"}
+]},
+{"election_id":"10","election_name":"যুক্তরাষ্ট্রের প্রেসিডেন্ট নির্বাচন ২০২০","constitution":[{"constitution_id":"14","constitution_name":"যুক্তরাষ্ট্রের প্রেসিডেন্ট নির্বাচন ২০২০","election_id":"10"}]},
+{"election_id":"11","election_name":"নারায়ণগঞ্জ সিটি নির্বাচন","constitution":[{"constitution_id":"15","constitution_name":"নারায়ণগঞ্জ সিটি নির্বাচন","election_id":"11"}]},
+{"election_id":"12","election_name":"কুমিল্লা সিটি করপোরেশন নির্বাচন-২০২২","constitution":[{"constitution_id":"16","constitution_name":"কুমিল্লা সিটি করপোরেশন নির্বাচন-২০২২","election_id":"12"}]},
+{"election_id":"13","election_name":" গাজীপুর নির্বাচন 2023","constitution":[{"constitution_id":"17","constitution_name":"গাজীপুর নির্বাচন 2023","election_id":"13"}]},
+{"election_id":"15","election_name":"ভোলা নির্বাচন ২০২৩","constitution":[{"constitution_id":"27","constitution_name":"ভোলা নির্বাচন ২০২৩","election_id":"15"}]},
+{"election_id":"16","election_name":"যশোর নির্বাচন ২০২৩ ","constitution":[{"constitution_id":"28","constitution_name":"যশোর নির্বাচন ২০২৩","election_id":"16"}]},
+{"election_id":"17","election_name":"ঝিকরগাছা নির্বাচন ২০২৩","constitution":[{"constitution_id":"29","constitution_name":"ঝিকরগাছা নির্বাচন ২০২৩","election_id":"17"}]},
+{"election_id":"18","election_name":"গাজীপুর সিটি নির্বাচন","constitution":[{"constitution_id":"30","constitution_name":"গাজীপুর সিটি নির্বাচন","election_id":"18"}]}
+]
