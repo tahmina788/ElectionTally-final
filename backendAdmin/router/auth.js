@@ -731,64 +731,47 @@ router.put("/candidatebangla2api/:selectedElectionId", async (req, res) => {
 		cons_obtainedcenter.push(item.obtainedcenter);
 		cons_banglaconstitutionname.push(item.banglaconstitutionname);
 	});
-
-
 	const updates = objectIds.map((objectId, index) => ({
 		updateOne: {
 			filter: { _id: objectId },
 			update: { $set: { totalvote: totalVotes[index], candidatenamebangla: candidatenames[index], partysymbol: partysymbols[index] } }
 		}
 	}));
-
 	console.log('updates')
 	console.log(updates)
-
 	const cons_updates = cons_objectIds.map((cons_objectId, index) => ({
 		updateOne: {
 			filter: { _id: cons_objectId },
 			update: { $set: { totalcenter: cons_totalcenter[index], obtainedcenter: cons_obtainedcenter[index], banglaconstitutionname: cons_banglaconstitutionname[index] } }
 		}
 	}));
-
 	console.log('cons_updates')
 	console.log(cons_updates)
-
 	const elec_updates = elec_objectIds.map((elec_objectId, index) => ({
 		updateOne: {
 			filter: { _id: elec_objectId },
 			update: { $set: { englishelectionname: electionTitle[index] } }
 		}
 	}));
-
 	console.log('elec_updates')
 	console.log(elec_updates)
-
 	try {
 		const result = await CandidateBangla.bulkWrite(updates);
 		const cons_result = await ConstitutionBangla.bulkWrite(cons_updates);
 		const elec_result = await Electionname.bulkWrite(elec_updates);
-
 		console.log('result')
 		console.log(result)
-
 		console.log('cons_result')
 		console.log(cons_result)
-
 		console.log('elec_result')
 		console.log(elec_result)
-
 		res.status(201).json({ message: "Values updated successfully" });
 	} catch (error) {
 		console.error(error);
 		res.status(500).json({ message: 'Internal Server Error' });
 	}
-
-
 });
-
-
 //  add candidate bangla name
-
 router.post('/candidatebangla', async (req, res) => {
 	try {
 		const { electionid, constitutionid, candidateid, candidatenamebangla, partysymbol, totalvote, date } = req.body;
