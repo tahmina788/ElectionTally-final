@@ -75,55 +75,55 @@ const Addconstitutionname = () => {
 		}
 	}
 	return (
-	<>
-		<div className="start_form">
-		<div className="container">
-			<div className="row">
-		<form method="POST" id="contact_form">
-			<>
-				<div>
-					<label htmlFor="firstSelect">Select an option:</label>
-					<select id="firstSelect" onChange={handleFirstSelectChange}>
-						<option value="default">Default Option</option>
-						<option value="election1">election 1</option>
-						<option value="election2">election 2</option>
-						<option value="election3">election 3</option>
-					</select>
-				</div>
-				<div>
-					<p>Bangla election name</p>
-					<select id="banglaecname" onChange={handleFirstSelectChange}>
-						{electionOptionData.map((item) => (
-							<option value={item._id}>{item.banglaelectionname}</option>
-						))}
-					</select>
-				</div>
+		<>
+			<div className="start_form">
+				<div className="container">
+					<div className="row">
+						<form method="POST" id="contact_form">
+							<>
+								<div>
+									<label htmlFor="firstSelect">Select an option:</label>
+									<select id="firstSelect" onChange={handleFirstSelectChange}>
+										<option value="default">Default Option</option>
+										<option value="election1">election 1</option>
+										<option value="election2">election 2</option>
+										<option value="election3">election 3</option>
+									</select>
+								</div>
+								<div>
+									<p>Bangla election name</p>
+									<select id="banglaecname" onChange={handleFirstSelectChange}>
+										{electionOptionData.map((item) => (
+											<option value={item._id}>{item.banglaelectionname}</option>
+										))}
+									</select>
+								</div>
 
-				<div className="form_input">
-					<label>Constitutionid id (serial id)</label>
-					<input type="text" onChange={handleInputs} value={electionNameData.constitutionid} name="constitutionid" id="constitutionid" placeholder="Enter your Constitutionid ( serial id)" />
-				</div>
-				<div className="form_input">
-					<label>Constitutionid name in Bangla</label>
-					<input type="text" onChange={handleInputs} value={electionNameData.banglaconstitutionname} name="banglaconstitutionname" id="banglaconstitutionname" placeholder="Enter your banglaconstitutionname" />
-				</div>
-				<div className="form_input">
-					<label>Constitutionid name in English</label>
-					<input type="text" onChange={handleInputs} value={electionNameData.englishconstitutionname} name="englishconstitutionname" id="englishconstitutionname" placeholder="Enter your englishelectionname" />
-				</div>
+								<div className="form_input">
+									<label>Constitutionid id (serial id)</label>
+									<input type="text" onChange={handleInputs} value={electionNameData.constitutionid} name="constitutionid" id="constitutionid" placeholder="Enter your Constitutionid ( serial id)" />
+								</div>
+								<div className="form_input">
+									<label>Constitutionid name in Bangla</label>
+									<input type="text" onChange={handleInputs} value={electionNameData.banglaconstitutionname} name="banglaconstitutionname" id="banglaconstitutionname" placeholder="Enter your banglaconstitutionname" />
+								</div>
+								<div className="form_input">
+									<label>Constitutionid name in English</label>
+									<input type="text" onChange={handleInputs} value={electionNameData.englishconstitutionname} name="englishconstitutionname" id="englishconstitutionname" placeholder="Enter your englishelectionname" />
+								</div>
 
-				<br />
-				<div className="contact_form_button">
-					<input type="submit" name="constitutionnamesubmit" id="constitutionnamesubmit" className="form-submit" value="submit" onClick={constitutionNameForm} />
-				</div>
-			</>
+								<br />
+								<div className="contact_form_button">
+									<input type="submit" name="constitutionnamesubmit" id="constitutionnamesubmit" className="form-submit" value="submit" onClick={constitutionNameForm} />
+								</div>
+							</>
 
-		</form>
+						</form>
+					</div>
+				</div>
 			</div>
-		</div>
-		</div>
 
-	</>
+		</>
 	)
 
 
