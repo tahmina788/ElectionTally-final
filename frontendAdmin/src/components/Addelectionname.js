@@ -10,52 +10,30 @@ import "./components.css";
 //const hostname = "192.168.0.102";
 
 const port = "7000";
-
 const { REACT_APP_HOST } = process.env;
 const hostname = `${REACT_APP_HOST}`;
-
 const Addelectionname = () => {
-
-	const history = useHistory();
-
+        const history = useHistory();
 	const [statusvalue, setStatusvalue] = useState(1);
-
 	const [electionNameData, setelectionNameData] = useState({
 		banglaelectionname: "", englishelectionname: "", statusfordisplay: "", templatetype: ""
 	});
-
-
 	// read election value from database
-
 	const [electionData, setElectionData] = useState([]);
-
 	let name, value;
-
-
-
 	// we are storing data in states
-
 	const handleInputs = (e) => {
 		console.log(e);
 		name = e.target.name;
 		value = e.target.value;
 		setelectionNameData({ ...electionNameData, [name]: value });
 	}
-
-
-
 	// send the data to backend
-
 	const electionNameForm = async (e) => {
 		e.preventDefault();
-
 		const { banglaelectionname, englishelectionname, statusfordisplay, templatetype } = electionNameData;
-
 		console.log('election post data');
-
 		const formattedElectionName = templatetype.toLowerCase().replace(/\s+/g, "-");
-
-
 		try {
 			const response = await fetch(`http://${hostname}:${port}/addelectionname`, {
 				method: 'POST',
@@ -69,10 +47,8 @@ const Addelectionname = () => {
 					templatetype: formattedElectionName
 				})
 			});
-
 			console.log('****************************************************************************')
 			const data = await response.json();
-
 			if (response.status === 201) {
 				//console.log(data.message); // "value inserted successfully"
 				window.alert("data inserted successfully");
@@ -83,17 +59,11 @@ const Addelectionname = () => {
 				window.alert("Invalid data");
 				console.log("Invalid data");
 			}
-
-
 		} catch (error) {
 			console.error(error);
 		}
-
 	};
-
-
 	// we are retrive data from db
-
 	const getElectionValue = async () => {
 		try {
 			const res = await fetch(`http://${hostname}:${port}/getelectiondata`, {
@@ -104,7 +74,6 @@ const Addelectionname = () => {
 				},
 				credentials: "include"
 			})
-
 			const data = await res.json();
 			console.log('Election data');
 			console.log(data);
@@ -121,8 +90,6 @@ const Addelectionname = () => {
 	useEffect(() => {
 		getElectionValue();
 	}, []);
-
-
 	return (
 		<>
 			<div className="start_form">
@@ -134,14 +101,8 @@ const Addelectionname = () => {
 									<h2>Add Election Name</h2>
 								</div>
 								<br />
-
 								<form method="POST" id="contact_form" onSubmit={electionNameForm}>
-
 									<>
-										{/* <div className="form_input">
-         <label>Election id (serial id)</label>
-         <input type="text" onChange={handleInputs} value={electionNameData.electionid} name="electionid" id="electionid" placeholder="Enter your Electionid ( serial id)" />
-	  </div>*/}
 										<div className="form_input">
 											<label>Election name in Bangla</label>
 											<input type="text" onChange={handleInputs} value={electionNameData.banglaelectionname} name="banglaelectionname" id="banglaelectionname" placeholder="Enter your banglaelectionname" />
@@ -155,16 +116,10 @@ const Addelectionname = () => {
 											<input type="text" onChange={handleInputs} value={electionNameData.templatetype} name="templatetype" id="templatetype" placeholder="Enter your templatetype" />
 										</div>
 										<input type="hidden" name="statusfordisplay" defaultValue={statusvalue} />
-
-
 										<br />
-
 										<button type="submit">Submit</button>
-
-
 									</>
-
-								</form>
+		                                              </form>
 							</div>
 						</div>
 					</div>
@@ -176,8 +131,6 @@ const Addelectionname = () => {
 					<div className="row">
 						<div class="result">
 							<h2>Result</h2>
-
-
 							<div>
 								{electionData.map((item) => (
 									<div key={item._id}>
@@ -191,7 +144,6 @@ const Addelectionname = () => {
 					</div>
 				</div>
 			</div>
-
 		</>
 	)
 }
